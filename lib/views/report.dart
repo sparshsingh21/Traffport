@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:traffport/views/help.dart';
 
 class GeneralScreen extends StatelessWidget {
   @override
@@ -73,7 +74,14 @@ class GeneralScreen extends StatelessWidget {
                     height: 40,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HelpScreen(),
+                        ),
+                      );
+                    },
                     child: Container(
                         height: MediaQuery.of(context).size.height * 0.06,
                         width: MediaQuery.of(context).size.width * 0.29,
