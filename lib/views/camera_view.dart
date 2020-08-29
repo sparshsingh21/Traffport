@@ -1,4 +1,10 @@
+import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:random_string/random_string.dart';
+import 'package:traffport/services/crud.dart';
+import 'describe.dart';
 
 class CameraScreen extends StatefulWidget {
   @override
@@ -6,6 +12,28 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraScreenState extends State<CameraScreen> {
+  CrudMethods crudMethods = new CrudMethods();
+  File selectedImage;
+
+  uploadPhoto() async {
+    StorageReference firebaseStorageRef = FirebaseStorage.instance
+        .ref()
+        .child("reportImages")
+        .child("${randomAlphaNumeric(9)}.jpg");
+
+    final StorageUploadTask task = firebaseStorageRef.putFile(selectedImage);
+    var downloadUrl = await (await task.onComplete).ref.getDownloadURL();
+    print("Download Url is $downloadUrl");
+  }
+
+  Future getImage() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      selectedImage = image;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,17 +74,33 @@ class _CameraScreenState extends State<CameraScreen> {
             SizedBox(
               height: 50,
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width * 0.8,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                  color: Colors.grey),
-              child: Center(
-                  child: Icon(
-                Icons.camera,
-                size: 50,
-              )),
+            GestureDetector(
+              onTap: () {
+                getImage();
+              },
+              child: selectedImage != null
+                  ? Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(40))),
+                      child: Image.file(
+                        selectedImage,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                  : Container(
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(40)),
+                          color: Colors.grey),
+                      child: Center(
+                          child: Icon(
+                        Icons.camera,
+                        size: 50,
+                      )),
+                    ),
             ),
             SizedBox(
               height: 50,
@@ -66,7 +110,9 @@ class _CameraScreenState extends State<CameraScreen> {
               child: RaisedButton(
                 color: Color(0xFF30EE8E),
                 onPressed: () {
-                  print('Success');
+                  uploadPhoto();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Describe()));
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.08,
