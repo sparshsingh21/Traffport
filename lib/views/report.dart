@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:traffport/views/help.dart';
+import 'camera_view.dart';
 
 class GeneralScreen extends StatelessWidget {
   @override
@@ -18,17 +19,19 @@ class GeneralScreen extends StatelessWidget {
               left: MediaQuery.of(context).size.width * 0.27,
               child: Container(
                   height: MediaQuery.of(context).size.height * 0.3,
-                  child:
-                      Image(image: AssetImage('assets/images/traffic.png')))),
+                  child: Hero(
+                      tag: 'signal',
+                      child: Image(
+                          image: AssetImage('assets/images/traffic.png'))))),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.45,
-            left: MediaQuery.of(context).size.width * 0.22,
-            child: Container(
+              top: MediaQuery.of(context).size.height * 0.45,
+              left: MediaQuery.of(context).size.width * 0.22,
+              child: Container(
                 child: Text(
-              'TRAFFPORT',
-              style: TextStyle(fontSize: 40),
-            )),
-          ),
+                  'TRAFFPORT',
+                  style: TextStyle(fontSize: 40),
+                ),
+              )),
           Positioned(
             top: MediaQuery.of(context).size.height * 0.52,
             left: MediaQuery.of(context).size.width * 0.38,
@@ -55,7 +58,12 @@ class GeneralScreen extends StatelessWidget {
                     height: 65,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CameraScreen()));
+                    },
                     child: Container(
                         height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.6,
@@ -94,7 +102,9 @@ class GeneralScreen extends StatelessWidget {
                               vertical: 5, horizontal: 10),
                           child: Row(
                             children: [
-                              Image.asset('assets/images/help.png'),
+                              Hero(
+                                  tag: 'help',
+                                  child: Image.asset('assets/images/help.png')),
                               Text(
                                 'HELP',
                                 style: TextStyle(fontSize: 20),
