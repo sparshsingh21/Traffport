@@ -1,1 +1,9 @@
-Add all the required documentations in this folder!
+Format for the report-
+1. Title
+2. Problem Statement
+3. Solution (App description)
+4. App advantages
+5. List of the softwares used and purpose of each software.
+5. List of tasks and their start and end dates and also who completed which task
+6. Development documentation
+7. Conclusion

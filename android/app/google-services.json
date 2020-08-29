@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "98706284835",
+    "firebase_url": "https://traffport-b15c6.firebaseio.com",
+    "project_id": "traffport-b15c6",
+    "storage_bucket": "traffport-b15c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98706284835:android:894c7daf7cf359051d6c96",
+        "android_client_info": {
+          "package_name": "com.example.traffport"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98706284835-ihlnot5qe3c3h6mon46qq9ndu2qjfccp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_o2NW7sO51wnUJ5TkZI4MPqXoiRJxH4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98706284835-ihlnot5qe3c3h6mon46qq9ndu2qjfccp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
