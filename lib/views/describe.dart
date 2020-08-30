@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Describe extends StatefulWidget {
-  @override
-  _DescribeState createState() => _DescribeState();
-}
-
-class _DescribeState extends State<Describe> {
-  TextEditingController _describeEvent = TextEditingController();
+class Describe extends StatelessWidget {
+  final TextEditingController _describeEvent = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +40,15 @@ class _DescribeState extends State<Describe> {
               width: MediaQuery.of(context).size.width * 0.8,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(40))),
-              child: Image.asset('assets/images/describe.png'))
+              child: Image.asset('assets/images/describe.png')),
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width * 0.85,
+            child: describe(),
+          )
         ],
       ),
     );

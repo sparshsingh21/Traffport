@@ -4,6 +4,13 @@ class Report {
   String vehicleNo;
   String dateTime;
 
+  Report(
+    this.url,
+    this.desc,
+    this.vehicleNo,
+    this.dateTime,
+  );
+
   Map<String, dynamic> toJson() => {
         'url': url,
         'description': desc,

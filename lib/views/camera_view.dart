@@ -14,6 +14,8 @@ class CameraScreen extends StatefulWidget {
 class _CameraScreenState extends State<CameraScreen> {
   CrudMethods crudMethods = new CrudMethods();
   File selectedImage;
+  String value;
+  final picker = ImagePicker();
 
   uploadPhoto() async {
     StorageReference firebaseStorageRef = FirebaseStorage.instance
@@ -27,10 +29,10 @@ class _CameraScreenState extends State<CameraScreen> {
   }
 
   Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+    final image = await picker.getImage(source: ImageSource.camera);
 
     setState(() {
-      selectedImage = image;
+      selectedImage = File(image.path);
     });
   }
 
