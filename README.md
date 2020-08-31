@@ -6,8 +6,10 @@ Users can describe the incident, click a photo and submit. The details will be s
 and further actions will be taken by them.
 
 ## TODO
- - [x] Create UI designs (User application and admin dashboard).
- - [ ] Develop both applications.
+ - [x] Create user application UI design.
+ - [x] Create admin dashboard UI design.
+ - [x] Develop user application.
+ - [ ] Develop admin dashboard.
  - [ ] Test both applications.
  - [ ] Write the documentation.
  - [ ] Create a presentation.
