@@ -17,23 +17,30 @@ class _CameraScreenState extends State<CameraScreen> {
   String value;
   final picker = ImagePicker();
 
-  uploadPhoto() async {
-    StorageReference firebaseStorageRef = FirebaseStorage.instance
-        .ref()
-        .child("reportImages")
-        .child("${randomAlphaNumeric(9)}.jpg");
-
-    final StorageUploadTask task = firebaseStorageRef.putFile(selectedImage);
-    var downloadUrl = await (await task.onComplete).ref.getDownloadURL();
-    print("Download Url is $downloadUrl");
-  }
-
   Future getImage() async {
-    final image = await picker.getImage(source: ImageSource.camera);
+    final image = await picker.getImage(source: ImageSource.gallery);
 
     setState(() {
       selectedImage = File(image.path);
     });
+  }
+
+  uploadPhoto() async {
+    if (selectedImage != null) {
+      StorageReference firebaseStorageRef = FirebaseStorage.instance
+          .ref()
+          .child("reportImages")
+          .child("${randomAlphaNumeric(9)}.jpg");
+
+      final StorageUploadTask task = firebaseStorageRef.putFile(selectedImage);
+
+      var downloadUrl = await (await task.onComplete).ref.getDownloadURL();
+      print('This is Url: $downloadUrl');
+
+      setState(() {
+        value = downloadUrl;
+      });
+    } else {}
   }
 
   @override
@@ -113,15 +120,17 @@ class _CameraScreenState extends State<CameraScreen> {
                 color: Color(0xFF30EE8E),
                 onPressed: () {
                   uploadPhoto();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Describe()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Describe(url: value)));
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.08,
                   width: MediaQuery.of(context).size.width * 0.5,
                   child: Center(
                     child: Text(
-                      'Submit',
+                      'Continue',
                       style: TextStyle(fontSize: 25),
                     ),
                   ),
