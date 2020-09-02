@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Confirm extends StatelessWidget {
-  final String url;
   final String description;
-  final String datetime;
+  var datetime;
   Confirm(
       {Key key,
-      @required this.url,
       @required this.description,
       @required this.datetime})
       : super(key: key);
@@ -41,16 +39,6 @@ class Confirm extends StatelessWidget {
           ),
           SizedBox(
             height: 20,
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: MediaQuery.of(context).size.width * 0.8,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(40))),
-            child: Image.network(
-              url,
-              fit: BoxFit.cover,
-            ),
           ),
           SizedBox(
             height: 20,

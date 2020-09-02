@@ -120,10 +120,8 @@ class _CameraScreenState extends State<CameraScreen> {
                 color: Color(0xFF30EE8E),
                 onPressed: () {
                   uploadPhoto();
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Describe(url: value)));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Describe()));
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.08,
