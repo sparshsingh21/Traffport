@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Confirm extends StatelessWidget {
-  final String description;
-  var datetime;
-  Confirm(
-      {Key key,
-      @required this.description,
-      @required this.datetime})
-      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF1C8E6B),
       body: Column(
         children: [
           SizedBox(
@@ -52,11 +46,11 @@ class Confirm extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Column(
                 children: [
-                  Text("Description: $description"),
+                  Text("Description:"),
                   SizedBox(
                     height: 5,
                   ),
-                  Text("Date and Time: $datetime"),
+                  Text("Date and Time:"),
                 ],
               ),
             ),

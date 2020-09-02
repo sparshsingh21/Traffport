@@ -62,10 +62,8 @@ class Describe extends StatelessWidget {
               child: RaisedButton(
                 color: Color(0xFF30EE8E),
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Confirm(
-                          description: _describeEvent.text,
-                          datetime: DateTime.now())));
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Confirm()));
                 },
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.08,
