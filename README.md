@@ -8,7 +8,7 @@ and further actions will be taken by them.
 ## TODO
  - [x] Create user application UI design.
  - [x] Create admin dashboard UI design.
- - [x] Develop user application.
+ - [ ] Develop user application.
  - [ ] Develop admin dashboard.
  - [ ] Test both applications.
  - [ ] Write the documentation.
