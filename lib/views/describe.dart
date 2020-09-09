@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:traffport/models/report_model.dart';
 import 'confirmation.dart';
 
 class Describe extends StatelessWidget {
   final TextEditingController _describeEvent = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +64,8 @@ class Describe extends StatelessWidget {
               child: RaisedButton(
                 color: Color(0xFF30EE8E),
                 onPressed: () {
+                  Report.desc = _describeEvent.text;
+                  Report.dateTime = DateTime.now().toString();
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) => Confirm()));
                 },
